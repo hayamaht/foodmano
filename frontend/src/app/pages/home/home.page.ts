@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Food } from 'src/app/models/food';
 import { FoodService } from 'src/app/services/food.service';
 
@@ -8,12 +9,22 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
+  #route = inject(ActivatedRoute);
   #foodService = inject(FoodService);
 
   foods: Food[] = [];
 
   ngOnInit(): void {
-    this.foods = this.#foodService.getAll();
+    this.#route.params.subscribe(params => {
+      const term = params['term'];
+      const tag = params['tag'];
+
+      if (term) {
+        this.foods = this.#foodService.search(term);
+      } else {
+        this.foods = this.#foodService.getAll();
+      }
+    });
 
   }
 }

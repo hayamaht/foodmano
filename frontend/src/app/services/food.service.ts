@@ -9,4 +9,11 @@ export class FoodService {
   getAll() {
     return sample_foods;
   }
+
+  search(term: string) {
+    return this.getAll()
+      .filter(food =>
+        food.name.toLowerCase().includes(term.toLowerCase())
+      );
+  }
 }

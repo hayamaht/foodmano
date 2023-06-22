@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimeModule } from './shared/prime/prime.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePage } from './pages/home/home.page';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomePage
+    HomePage,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
