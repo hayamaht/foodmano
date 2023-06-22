@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimeModule } from './shared/prime/prime.module';
 import { HeaderComponent } from './components/header/header.component';
+import { HomePage } from './pages/home/home.page';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomePage
   ],
   imports: [
     BrowserModule,
