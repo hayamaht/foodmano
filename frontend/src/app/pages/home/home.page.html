@@ -4,50 +4,52 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4
     gap-4
   ">
-    <div *ngFor="let food of foods"
-      class="card bg-base-100 shadow-xl">
-      <figure>
-        <img [src]="food.imageUrl" [alt]="food.name">
-      </figure>
-      <div class="card-body">
-        <div class="flex items-center">
-          <h2 class="card-title flex-1 font-extrabold">{{ food.name }}</h2>
-          <span class="flex-none ">
-            <svg class="w-6 h-6 text-gray-400 {{ !food.favorite ? '' : 'hidden' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            <svg class="w-6 h-6 text-red-500 {{ food.favorite ? '' : 'hidden' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
-          </span>
-        </div>
+    <div *ngFor="let food of foods">
+      <a routerLink="/food/{{ food.id }}">
+        <div class="card bg-base-100 shadow-xl">
+          <figure>
+            <img [src]="food.imageUrl" [alt]="food.name">
+          </figure>
+          <div class="card-body p-4">
 
-        <div>
-          <p-rating [(ngModel)]="food.stars"
-            [readonly]="true"
-            [cancel]="false">
-          </p-rating>
-        </div>
+            <p-rating [(ngModel)]="food.stars"
+              [readonly]="true"
+              [cancel]="false">
+            </p-rating>
 
-        <div>
-          <span class="badge badge-secondary mr-1" *ngFor="let ori of food.origins">
-            {{ ori }}
-          </span>
-        </div>
+            <div class="flex items-center">
+              <h2 class="card-title flex-1 font-extrabold">{{ food.name }}</h2>
+              <span class="flex-none ">
+                <svg class="w-6 h-6 text-gray-400 {{ !food.favorite ? '' : 'hidden' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <svg class="w-6 h-6 text-red-500 {{ food.favorite ? '' : 'hidden' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+              </span>
+            </div>
 
-        <div>
-          <i class="pi pi-tag"></i>
-          <span *ngFor="let tag of food.tags"
-            class="badge badge-info text-white mr-1">
-            {{ tag }}
-          </span>
-        </div>
+            <div>
+              <span class="badge badge-secondary mr-1" *ngFor="let ori of food.origins">
+                {{ ori }}
+              </span>
+            </div>
 
-        <div class="flex">
-          <i class="pi pi-clock"></i>
-          {{ food.cookTime }}
-        </div>
+            <div>
+              <i class="pi pi-tag"></i>
+              <span *ngFor="let tag of food.tags"
+                class="badge badge-info text-white mr-1">
+                {{ tag }}
+              </span>
+            </div>
 
-        <p class="text-2xl font-bold">
-          {{ food.price | currency }}
-        </p>
-      </div>
+            <div class="flex">
+              <i class="pi pi-clock"></i>
+              {{ food.cookTime }}
+            </div>
+
+            <p class="text-2xl font-bold">
+              {{ food.price | currency }}
+            </p>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </main>

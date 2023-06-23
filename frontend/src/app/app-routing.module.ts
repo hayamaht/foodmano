@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.page';
+import { FoodPage } from './pages/food/food.page';
 
 const routes: Routes = [
   {
@@ -10,7 +11,11 @@ const routes: Routes = [
   {
     path: 'search/:term',
     component: HomePage,
-  }
+  },
+  {
+    path: 'food/:id',
+    component: FoodPage,
+  },
 ];
 
 @NgModule({

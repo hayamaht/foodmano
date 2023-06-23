@@ -9,13 +9,15 @@ import { PrimeModule } from './shared/prime/prime.module';
 import { HeaderComponent } from './components/header/header.component';
 import { HomePage } from './pages/home/home.page';
 import { SearchComponent } from './components/search/search.component';
+import { FoodPage } from './pages/food/food.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomePage,
-    SearchComponent
+    SearchComponent,
+    FoodPage
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,75 @@
+<div class="container mx-auto">
+  <p-breadcrumb class="max-w-full "
+    styleClass="bg-transparent border-none"
+    [model]="items"
+    [home]="home"
+  ></p-breadcrumb>
+
+  <ng-template #noData>
+    <h2>No Data</h2>
+    <p><a routerLink="/">Home</a></p>
+    <!-- <app-not-found
+      [visible]="!food"
+      notFoundMessage="Product Not Found!"
+      resetLinkText="Back To Homepage"
+    ></app-not-found> -->
+  </ng-template>
+
+  <ng-container *ngIf="food else noData">
+    <div *ngIf="food" class="md:flex p-4">
+      <div class="md:w-1/2">
+        <img class="object-cover w-full"
+          [src]="food.imageUrl"
+          [alt]="food.name"
+          title="{{ food.name }}"
+        >
+      </div>
+
+      <div class="grow m-4">
+        <div class="flex items-center">
+          <h2 class="flex-1 text-2xl font-bold">{{ food.name }}</h2>
+
+          <span class="flex-none ">
+            <svg class="w-6 h-6 text-gray-400 {{ !food.favorite ? '' : 'hidden' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <svg class="w-6 h-6 text-red-500 {{ food.favorite ? '' : 'hidden' }}" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+          </span>
+
+        </div>
+
+        <div>
+          <p-rating [(ngModel)]="food.stars" [readonly]="true" [cancel]="false" ></p-rating>
+        </div>
+
+        <div>
+          <span class="badge badge-secondary mr-1" *ngFor="let ori of food.origins">
+            {{ ori }}
+          </span>
+        </div>
+
+        <div>
+          <svg class="w-5 h-5 inline-flex text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
+          <span *ngFor="let tag of food.tags"
+            class="badge badge-info text-white mr-1">
+            {{ tag }}
+          </span>
+        </div>
+
+        <div class="flex">
+          <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          {{ food.cookTime }}
+        </div>
+
+        <p class="text-2xl font-bold">{{ food.price | currency }}</p>
+
+        <div class="text-right">
+          <!-- <button (click)="addToCart"
+            class="btn btn-primary"
+          >
+            Add to cart
+          </button> -->
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
