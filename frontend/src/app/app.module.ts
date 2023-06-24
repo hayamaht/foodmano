@@ -11,6 +11,7 @@ import { HomePage } from './pages/home/home.page';
 import { SearchComponent } from './components/search/search.component';
 import { FoodPage } from './pages/food/food.page';
 import { TagsComponent } from './components/tags/tags.component';
+import { CartPage } from './pages/cart/cart.page';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TagsComponent } from './components/tags/tags.component';
     HomePage,
     SearchComponent,
     FoodPage,
-    TagsComponent
+    TagsComponent,
+    CartPage
   ],
   imports: [
     BrowserModule,
