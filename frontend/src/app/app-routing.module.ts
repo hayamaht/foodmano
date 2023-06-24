@@ -13,6 +13,10 @@ const routes: Routes = [
     component: HomePage,
   },
   {
+    path: 'tag/:tag',
+    component: HomePage,
+  },
+  {
     path: 'food/:id',
     component: FoodPage,
   },

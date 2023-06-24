@@ -21,6 +21,8 @@ export class HomePage implements OnInit {
 
       if (term) {
         this.foods = this.#foodService.search(term);
+      } else if(tag) {
+        this.foods = this.#foodService.getByTag(tag);
       } else {
         this.foods = this.#foodService.getAll();
       }
