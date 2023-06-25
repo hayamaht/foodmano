@@ -1,1 +1,91 @@
-<p>cart works!</p>
+<main class="m-4">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-black">Cart</h2>
+
+    <ng-template #noData>
+      <h3 class="text-2xl ">No Data</h3>
+      <a routerLink="/" class="btn btn-primary">Home</a>
+    </ng-template>
+
+    <div *ngIf="(cart && cart.items?.length) else noData">
+      <!-- Step -->
+      <div class="flex justify-center my-3">
+        <ul class="steps">
+          <li class="step step-primary">Priview</li>
+          <li class="step ">Payment</li>
+          <li class="step ">Check Out</li>
+        </ul>
+      </div>
+      <!-- /Step -->
+
+      <!-- Cart -->
+      <div class="">
+        <ul class="border border-primary
+          list-none p-2 text-center"
+        >
+          <li *ngFor="let item of cart.items"
+            class="sm:flex sm:items-center m-4"
+          >
+            <div class="avatar flex-none">
+              <div class="w-28 rounded-full">
+                <img [src]="item.food.imageUrl"
+                  [alt]="item.food.name"
+                >
+              </div>
+            </div>
+            <div class="flex-1 underline ">
+              <a routerLink="/food/{{ item.food.id }}">
+                {{ item.food.name }}
+              </a>
+            </div>
+            <div>
+              <select #quantitySelect
+                name="quantity" title="Quantity"
+                [value]="item.quantity"
+                (change)="changeQuantity(quantitySelect.value, item)"
+                class="select select-bordered w-full">
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="text-xl font-bold self-center m-4">
+              {{ item.price | currency }}
+            </div>
+            <div class="justify-end">
+              <button (click)="removeFromCart(item)"
+                class="btn btn-secondary w-full">
+                <i class="pi pi-trash"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- /Cart -->
+
+      <!-- Total-->
+      <div class="mb-6" *ngIf="cart && cart.items.length">
+        <div class="flex justify-between items-center">
+          <p class="text-lg font-bold">Count</p>
+          <p class="text-lg font-bold">{{ cart.totalCount }}</p>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <p class="text-lg font-bold">Total</p>
+          <p class="text-lg font-bold">{{ cart.totalPrice | currency }}</p>
+        </div>
+      </div>
+      <!-- /Total-->
+
+      <a routerLink="/checkout"
+        class="btn btn-primary w-full"
+      >
+        Check Out
+      </a>
+    </div>
+
+  </div>
+</main>

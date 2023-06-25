@@ -3,6 +3,8 @@ import { Cart } from '../models/cart';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Food } from '../models/food';
 
+const FM_CART = 'foodmano_cart';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -57,12 +59,12 @@ export class CartService {
     this.#cart.totalCount = this.#cart.items
       .reduce((total, item) => total + item.quantity, 0);
 
-    localStorage.setItem('cart', JSON.stringify(this.#cart));
+    localStorage.setItem(FM_CART, JSON.stringify(this.#cart));
     this.#cartSubject.next(this.#cart);
   }
 
   #getLocalStorage():Cart {
-    const cartJson = localStorage.getItem('foodmano_cart');
+    const cartJson = localStorage.getItem(FM_CART);
     return cartJson ? JSON.parse(cartJson) : {} as Cart;
   }
 }

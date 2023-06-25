@@ -1,5 +1,5 @@
 <header class="bg-rose-500 sticky z-50">
-  <div class="container">
+  <div class="container mx-auto">
     <div class="navbar ">
       <div class="navbar-start">
         <div class="dropdown">
@@ -34,6 +34,18 @@
         </ul>
       </div>
       <div class="navbar-end">
+        <a routerLink="/cart" class="btn btn-ghost">
+          <i class="pi pi-shopping-cart"
+            style="font-size: 1.5rem;"
+            *ngIf="cartQuantity === 0"></i>
+          <div class="indicator" *ngIf="cartQuantity > 0">
+            <span class="indicator-item badge badge-secondary">
+              {{ cartQuantity }}
+            </span>
+            <i class="pi pi-shopping-cart"
+            style="font-size: 1.5rem;"></i>
+          </div>
+        </a>
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
