@@ -12,6 +12,7 @@ import { SearchComponent } from './components/search/search.component';
 import { FoodPage } from './pages/food/food.page';
 import { TagsComponent } from './components/tags/tags.component';
 import { CartPage } from './pages/cart/cart.page';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CartPage } from './pages/cart/cart.page';
     SearchComponent,
     FoodPage,
     TagsComponent,
-    CartPage
+    CartPage,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -5,17 +5,13 @@
     [home]="home"
   ></p-breadcrumb>
 
-  <ng-template #noData>
-    <h2>No Data</h2>
-    <p><a routerLink="/">Home</a></p>
-    <!-- <app-not-found
-      [visible]="!food"
-      notFoundMessage="Product Not Found!"
-      resetLinkText="Back To Homepage"
-    ></app-not-found> -->
-  </ng-template>
+  <app-not-found
+    [visible]="!food"
+    notFoundMessage="Product Not Found!"
+    resetLinkText="Back To Homepage"
+  ></app-not-found>
 
-  <ng-container *ngIf="food else noData">
+  <ng-container *ngIf="food">
     <div *ngIf="food" class="md:flex p-4">
       <div class="md:w-1/2">
         <img class="object-cover w-full"
